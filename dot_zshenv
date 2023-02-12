@@ -1,0 +1,4 @@
+#export PATH="$HOME/homebrew/bin:$PATH"
+
+# Test chezmoi
+
