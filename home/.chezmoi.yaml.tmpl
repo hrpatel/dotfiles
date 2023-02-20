@@ -1,0 +1,24 @@
+{{- $ephemeral := false -}}{{/* true if this machine is ephemeral, e.g. a cloud or VM instance */}}
+{{- $gitEmail := promptString "Git config email" -}}
+{{- $headless := false -}}{{/* true if this machine does not have a screen and keyboard */}}
+{{- $personal := false -}}{{/* true if this machine should have personal secrets */}}
+{{- $hostname := .chezmoi.hostname -}}
+
+{{/* detect GitHub codespaces, VSCode remote containers, Docker containers, Multipass VMs, and Vagrant boxes */}}
+{{- if or (env "CODESPACES") (env "REMOTE_CONTAINERS_IPC") (eq .chezmoi.username "root" "ubuntu" "vagrant" "vscode") -}}
+{{-   $ephemeral = true -}}
+{{-   $headless = true -}}
+{{- end -}}
+
+{{- if not $ephemeral -}}
+{{-   if eq $hostname "raspberrypi4" -}}
+{{-     $headless = true -}}
+{{-     $personal := false -}}{{/* true if this machine should have personal secrets */}}
+{{-   end -}}
+{{- end -}}
+
+data:
+    ephemeral: {{ $ephemeral }}
+    gitEmail: {{ $gitEmail | quote }}
+    headless: {{ $headless }}
+    personal: {{ $personal }}
