@@ -10,4 +10,7 @@ Run:
 
 ```bash
 chezmoi init hrpatel --ssh --verbose
+chezmoi diff
+chezmoi apply --dry-run --verbose (OPTIONAL)
+chezmoi apply --verbose
 ```
