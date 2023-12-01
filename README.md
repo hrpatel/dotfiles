@@ -6,8 +6,15 @@
 
 ## Install
 
-Run:
+Dependencies
+* `brew`
+* `chezmoi`
+* `git`
 
+Configure
+* SSH key
+
+Run:
 ```bash
 chezmoi init hrpatel --ssh --verbose
 chezmoi diff
