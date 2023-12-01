@@ -70,7 +70,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(aliases git helm kubectl ssh-agent zsh-syntax-highlighting)
+plugins=(aliases brew git helm kubectl ssh-agent zsh-syntax-highlighting)
 
 {{ if eq .chezmoi.os "darwin" -}}
 # Homebrew modifications for multi account causes errors with autocomplete files
